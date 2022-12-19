@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<body class="text-center">
+
+
+
+<br>
+<center>
+    <h2 class="h3 mb-3 font-weight-normal"> Iniciar Sesion</h2>
+</center>
+
+
+<form action="#" th:action="@{/login}" th:object="${user}"  method="post">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            Usuario:
+            <input id="name" name="name" class="form-control" type="text" th:field="*{username}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            Contraseña
+             <input id="contrast" name="contrast" class="form-control" type="password" th:field="*{contrast}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6"><button class="btn btn-lg btn-primary btn-block" type="submit" id="login-button">Entrar</button>
+
+        </div>
+    </div>
+</form>
+
+
+</body>
+</html>
