@@ -2,8 +2,9 @@ package com.example.demo.model.user;
 
 import com.example.demo.model.employee.Employee;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
+
 import java.util.ArrayList;
 
 public interface UserDAO {
@@ -13,5 +14,5 @@ public interface UserDAO {
     User findByUsername(String username);
     ArrayList<User> GetAllUsers();
 
-    Page<User> findAllUsers(Pageable pageable);
+    Page <User> findPaginated(int pageNo, int pageSize);
 }

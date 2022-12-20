@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="navBar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" th:href="@{/employees/0}">
+                        <img
+                                src="https://www.nunegal.com/empnunegal/img/logoproduction.png"
+                                class="rounded-circle"
+                                height="50"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"
+                        />
+                    </a>
+                    <!-- Left links  /employees/{pageNo}-->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/employees/0}">Mantenimiento de empleados</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/0}">Mantenimiento de usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--<a class="nav-link" th:href="#">Team</a>-->
+                        </li>
+                        <li class="nav-item">
+                            <!--<a class="nav-link" th:href="#"><img src="https://www.nunegal.com/empnunegal/img/off.png" height="50" ></a>-->
+                            <a class="nav-link" th:href="@{/login}"><img th:src="@{../static/img/off.png}" height="50" ></a>
+                        </li>
+                    </ul>
+                    <!-- Left links -->
+                </div>
+            </div>
+        </nav>
+  </div>
+</html>

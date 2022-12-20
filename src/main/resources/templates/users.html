@@ -10,49 +10,9 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-        <!-- Toggle button -->
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <i class="fas fa-bars"></i>
-        </button>
 
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="@{/employees/0}">
-                <img
-                        src="https://www.nunegal.com/empnunegal/img/logoproduction.png"
-                        class="rounded-circle"
-                        height="50"
-                        alt="Black and White Portrait of a Man"
-                        loading="lazy"
-                />
-            </a>
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/users}">Mantenimiento de usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-        </div>
-    </div></nav>
+<div th:replace="fragments/navBar :: navBar"></div>
+
 <div>Usuarios</div>
 <div class="row"></div>
 <div class="row"></div>
@@ -66,7 +26,7 @@
                 <th>Name</th>
                 <th></th>
             </tr>
-            <div th:each="user : ${users}">
+            <div th:each="user : ${listusr}">
                 <tr>
 
                     <td><a th:text="${user.getUsername()}"></a></td>
@@ -82,12 +42,33 @@
                 </tr>
 
             </div>
+            <div th:if="${totalPages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Rows: [[${totalPages}]]
+                    </div>
+                    <div class="col-sm-1">
+            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+      <a th:if="${currentPage != i}" th:href="@{'/users/' + ${i}}">[[${i}]]</a>
+      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+            </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${currentPage < totalPages}" th:href="@{'/users/' + ${currentPage + 1}}">Next</a>
+                        <span th:unless="${currentPage < totalPages}">Next</span>
+                    </div>
 
+                    <div class="col-sm-1">
+                        <a th:if="${currentPage < totalPages}" th:href="@{'/users/' + ${totalPages}}">Last</a>
+                        <span th:unless="${currentPage < totalPages}">Last</span>
+                    </div>
+                </div>
+            </div>
             </tbody>
         </table>
     <nav aria-lavel="Page navigation example">
         <ul class="pagination mt-4">
-            <li class="page-item" th:each="page, status:${pages}">
+            <li class="page-item" th:each="page, status:${listusers}">
                 <a class="page-link" th:text="${status.index}"></a>
             </li>
         </ul>
