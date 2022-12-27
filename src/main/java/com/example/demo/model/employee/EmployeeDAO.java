@@ -1,10 +1,11 @@
 package com.example.demo.model.employee;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 
 
@@ -14,10 +15,12 @@ public interface EmployeeDAO {
 
     Employee findById(int id);
 
-    Iterable<Employee> findAll();
+    Iterable<Employee> findAll(Pageable pageable);
 
     void save(Employee employee);
 
     void deleteById(int id);
-    //Page<Employee> findAllEmployees(Pageable pageable);
+    Page<Employee> findAllEmployees(Pageable pageable);
+
+    long count();
 }

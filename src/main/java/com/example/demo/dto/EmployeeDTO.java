@@ -4,6 +4,8 @@ public class EmployeeDTO {
 
     private Integer id;
     private String name;
+    private String lastName;
+
 
     public Integer getId() {
         return id;
@@ -19,5 +21,12 @@ public class EmployeeDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public  String getLastName(){
+        return lastName;
+    }
+    public void setLastName(String lastName){
+        this.lastName=lastName;
     }
 }

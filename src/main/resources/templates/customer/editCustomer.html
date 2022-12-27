@@ -1,3 +1,5 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +10,29 @@
 <body>
 <div th:replace="fragments/navBar :: navBar"></div>
 
-<h1>Editar Usuario</h1>
-<form action="#" th:action="@{/employees/edit}" th:object="${employee}"  method="post">
+<h1>Editar Cliente</h1>
+<form action="#" th:action="@{/customer/edit}" th:object="${customer}"  method="post">
   <div class="row">
     <div class="col-sm-12">
       Id:
-      <input id="id" class="form-control" type="text" th:field="*{id}" readonly="readonly" />
+      <input id="id" name="id" class="form-control" type="text" th:field="*{id}" readonly="readonly" />
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
       Nombre:
-      <input id="name" class="form-control" type="text" th:field="*{name}" />
+      <input id="name" name="name" class="form-control" type="text" th:field="*{name}" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <input type="submit" class="btn btn-primary" value="modificar empleado">
+      <input type="submit" class="btn btn-primary" value="modificar Cliente">
     </div>
   </div>
 </form>

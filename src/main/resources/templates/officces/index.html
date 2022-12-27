@@ -22,50 +22,48 @@
 <br/>
 
 <div class="row">
-<table class="table table-striped align-middle table-sm text-center order-column w-100">
-    <thead>
+    <!--    <table class="table table-striped align-middle table-sm text-center order-column w-100">
+            <thead>
 
-    </thead>
-    <tbody>
-    <tr>
+            </thead>
+            <tbody>
+            <tr>
 
-        <th>Name</th>
-        <th>Last Name</th>
-        <th>Fa</th>
-        <th></th>
-    </tr>
-        <tr th:each="employee : ${employeePage.content}">
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="customer : ${customerPage.content}">
 
-                <td><span th:text="${employee.getName()}"></span></td>
-                <td><span th:text="${employee.getLastname()}"></span></td>
+                <td><span th:text="${customer.getName()}"></span></td>
                 <td>
-                    <a th:href="@{/editEmployee/{id}(id=${employee.getId()})}" class="btn btn-primary" >
-                                <img src="../img/pencil.png" />
+                    <a th:href="@{/editCustomer/{id}(id=${customer.getId()})}" class="btn btn-primary" >
+                        <img src="../img/pencil.png" />
                     </a>
                 </td>
                 <td>
-                    <a th:href="@{/deleteEmployee/{id}(id=${employee.getId()})}" class="btn btn-danger btn-lg"  >
-                       <img src="../img/bin.png" />
-                   </a>
+                    <a th:href="@{/deletecustomer/{id}(id=${customer.getId()})}" class="btn btn-danger btn-lg"  >
+                        <img src="../img/bin.png" />
+                    </a>
                 </td>
             </tr>
 
-        </tbody>
-</table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
-    <nav th:if="${employeePage.totalPages > 0}" aria-label="Pagination"
-        th:each="pageNumber : ${pageNumbers}" style=>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <nav th:if="${customerPage.totalPages > 0}" aria-label="Pagination"
+             th:each="pageNumber : ${pageNumbers}" style=>
 
-            <a th:href="@{/employees(size=${employeePage.size}, page=${pageNumber})}"
-       th:text=${pageNumber} class="page-item"
-       th:class="${pageNumber==employeePage.number + 1} ? active"></a>
-    </nav>
-</div>
-    <!--
+            <a th:href="@{/customers(size=${customerPage.size}, page=${pageNumber})}"
+               th:text=${pageNumber} class="page-item"
+               th:class="${pageNumber==customerPage.number + 1} ? active"></a>
+        </nav>
+    </div>
+
     <nav aria-label="Pagination" th:if="${customers.totalPages gt 0}">
         <ul class="pagination justify-content-center font-weight-medium">
             <li class="page-item" th:classappend="${customers.number eq 0} ? 'disabled'">
@@ -95,11 +93,11 @@
                 </a>
             </li>
         </ul>
-    </nav>
-</div>-->
+    </nav>-->
+    </div>
 
 <div class="row">
-<a th:href="@{/employees/new}"  class="btn btn-primary">Nuevo empleado</a>
+    <a th:href="@{/oficces/new}"  class="btn btn-primary">Nueva Oficina</a>
 </div>
 </body>
 <!--

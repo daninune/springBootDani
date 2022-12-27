@@ -38,7 +38,7 @@ public class LoginController {
         //System.out.println(" username "+u.getUsername()+" contrasena "+u.getContrast()+" encripted username "+encripted);
 
         if (u.getUsername().equals("admin") && u.getContrast().equals("admin")){
-            return "redirect:/employees/0";
+            return "redirect:/employees";
         }else {
             return "redirect:login";
         }

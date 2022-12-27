@@ -42,16 +42,19 @@
                 </tr>
 
             </div>
+
+            </tbody>
+            <tfoot>
             <div th:if="${totalPages > 1}">
                 <div class="row col-sm-10">
                     <div class="col-sm-2">
                         Total Rows: [[${totalPages}]]
                     </div>
                     <div class="col-sm-1">
-            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-      <a th:if="${currentPage != i}" th:href="@{'/users/' + ${i}}">[[${i}]]</a>
-      <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-            </span>
+                      <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                           <a th:if="${currentPage != i}" th:href="@{'/users/' + ${i}}">[[${i}]]</a>
+                             <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                          </span>
                     </div>
                     <div class="col-sm-1">
                         <a th:if="${currentPage < totalPages}" th:href="@{'/users/' + ${currentPage + 1}}">Next</a>
@@ -64,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            </tbody>
+            </tfoot>
         </table>
     <nav aria-lavel="Page navigation example">
         <ul class="pagination mt-4">

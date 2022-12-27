@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
 <div th:replace="fragments/navBar :: navBar"></div>
@@ -13,12 +14,96 @@
 
 <form action="#" th:action="@{/employees/save}" th:object="${employee}"  method="post">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-4">
+
+            <label>Fecha Incorporacion:</label>
+            <input  name="startDate" class="form-control" type="date" th:field="*{startDate}" />
+        </div>
+        <div class="col-sm-4">
             Nombre:
             <input  name="name" class="form-control" type="text" th:field="*{name}" />
         </div>
+        <div class="col-sm-4">
+        Apellidos :
+            <input  name="lastname" class="form-control" type="text" th:field="*{lastname}" />
+        </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-4">
+
+            <label>Fecha Nacimiento</label>
+            <input  name="fechaNacimiento" class="form-control" type="date" th:field="*{fechaNacimiento}" />
+        </div>
+        <div class="col-sm-4">
+            <label>Dni</label>
+            <input  name="idcard" class="form-control" type="text" th:field="*{idcard}" />
+            <!--Provincia:
+            -->
+        </div>
+        <div class="col-sm-4">
+            <label>Numero de la seguridad social :</label>
+
+            <input  name="ssnumber" class="form-control" type="text" th:field="*{ssnumber}" />
+            <!--
+            <select name="idCustomer" class="form-control" th:field="*{idCustomer}">
+                <option th:each="customer : ${customers}"  th:value="${customer.id}" th:text="${customer.name}"/>
+            </select>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Direccion:</label>
+            <input  name="address" class="form-control" type="text" th:field="*{address}" />
+        </div>
+        <div class="col-sm-4">
+            <label>Codigo postal:</label>
+            <input  name="zip" class="form-control" type="text" th:field="*{zip}" />
+        </div>
+
+        <div class="col-sm-4">
+            <label>Localidad:</label>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Province:</label>
+            <select name="idProvince" class="form-control" th:field="*{idProvince}">
+                <option th:each="province : ${provinces}"  th:value="${province.idProvinces}" th:text="${province.name}"/>
+
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label>Pais:</label>
+            <select name="country" class="form-control" th:field="*{country}">
+                <option th:each="pais : ${paises}"  th:value="${pais.id}" th:text="${pais.nombre}"/>
+
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label>Telefono:</label>
+            <input  name="tel" class="form-control" type="text" th:field="*{tel}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Email:</label>
+            <input  name="email" class="form-control" type="text" th:field="*{email}" />
+        </div>
+        <div class="col-sm-4">
+            <label>Numero de cuenta (IBAN) :</label>
+            <input  name="iban" class="form-control" type="text" th:field="*{iban}" />
+        </div>
+        <div class="col-sm-4">
+            <label>Cliente :</label>
+            <select name="customers" class="form-control" th:field="*{country}">
+                <option th:each="customer : ${customers}"  th:value="${customer.id}" th:text="${customer.name}"/>
+
+            </select>
+
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12">
             <input type="submit" class="btn btn-primary" value="guardar">
@@ -27,6 +112,8 @@
         </div>
     </div>
 </form>
+<script type="text/javascript"  th:src="@{js/jquery-1.4.4.min.js}"></script>
+<script type="text/javascript"  th:src="@{js/newEmployee.js}"></script>
 
 </body>
 </html>
