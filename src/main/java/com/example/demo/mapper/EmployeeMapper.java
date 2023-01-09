@@ -13,7 +13,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper {
-
+/*
     @Named("toEmployeeDTO")
     EmployeeDTO toEmployeeDTO(Employee employee);
     @Named("toEmployee")
@@ -24,5 +24,5 @@ public interface EmployeeMapper {
     @Name("toEmployeeList")
     List<Employee> toEmployeeList(List<EmployeeDTO> employeesDTO);
     @Named("toUser")
-    User userDtoToUser(UserDTO userDto);
+    User userDtoToUser(UserDTO userDto);*/
 }

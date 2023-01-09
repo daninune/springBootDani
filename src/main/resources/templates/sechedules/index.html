@@ -20,52 +20,52 @@
 <br/>
 <br/>
 <br/>
-
+<!--
 <div class="row">
     <div class="col-sm-2"></div>
     <table class="table table-striped align-middle table-sm text-center order-column w-100">
-            <thead>
+        <thead>
 
-            </thead>
-            <tbody>
-            <tr>
+        </thead>
+        <tbody>
+        <tr>
 
-                <th>Name</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr th:each="ofice : ${officesPage.content}">
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="ofice : ${officesPage.content}">
 
-                <td><span th:text="${ofice.getName()}"></span></td>
-                <td>
-                    <a th:href="@{/editOffice/{id}(id=${ofice.getId()})}" class="btn btn-primary" >
-                        <img src="../img/pencil.png" />
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{/deleteOficce/{id}(id=${ofice.getId()})}" class="btn btn-danger btn-lg"  >
-                        <img src="../img/bin.png" />
-                    </a>
-                </td>
-            </tr>
+            <td><span th:text="${ofice.getName()}"></span></td>
+            <td>
+                <a th:href="@{/editOffice/{id}(id=${ofice.getId()})}" class="btn btn-primary" >
+                    <img src="../img/pencil.png" />
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/deleteOficce/{id}(id=${ofice.getId()})}" class="btn btn-danger btn-lg"  >
+                    <img src="../img/bin.png" />
+                </a>
+            </td>
+        </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </div>
+</div>
 
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4"></div>
-        <nav th:if="${officesPage.totalPages > 0}" aria-label="Pagination"
-             th:each="pageNumber : ${pageNumbers}" style=>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <nav th:if="${officesPage.totalPages > 0}" aria-label="Pagination"
+         th:each="pageNumber : ${pageNumbers}" style=>
 
-            <a th:href="@{/oficces(size=${officesPage.size}, page=${pageNumber})}"
-               th:text=${pageNumber} class="page-item"
-               th:class="${pageNumber==officesPage.number + 1} ? active"></a>
-        </nav>
-    </div>
-<!--
+        <a th:href="@{/oficces(size=${officesPage.size}, page=${pageNumber})}"
+           th:text=${pageNumber} class="page-item"
+           th:class="${pageNumber==officesPage.number + 1} ? active"></a>
+    </nav>
+</div>
+
     <nav aria-label="Pagination" th:if="${customers.totalPages gt 0}">
         <ul class="pagination justify-content-center font-weight-medium">
             <li class="page-item" th:classappend="${customers.number eq 0} ? 'disabled'">
@@ -96,10 +96,10 @@
             </li>
         </ul>
     </nav>-->
-    </div>
+</div>
 
 <div class="row">
-    <a th:href="@{/oficces/new}"  class="btn btn-primary">Nueva Oficina</a>
+    <a th:href="@{/Sechedules/new}"  class="btn btn-primary">Nuevo Horario</a>
 </div>
 </body>
 <!--

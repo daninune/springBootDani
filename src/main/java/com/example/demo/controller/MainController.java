@@ -7,7 +7,10 @@ import com.example.demo.model.customer.CustomerService;
 import com.example.demo.model.employee.Employee;
 import com.example.demo.model.employee.EmployeeDAO;
 import com.example.demo.model.employee.EmployeeService;
+import com.example.demo.model.officce.Offices;
+import com.example.demo.model.officce.OfficesRepository;
 import com.example.demo.model.paises.PaisRepository;
+import com.example.demo.model.paises.PaisService;
 import com.example.demo.model.paises.Paises;
 import com.example.demo.model.provinces.ProvinceService;
 import com.example.demo.model.provinces.Provinces;
@@ -43,7 +46,10 @@ public class MainController {
     @Autowired
     CustomerService customerService;
     @Autowired
-    PaisRepository paisService;
+    PaisService paisService;
+
+    @Autowired
+    OfficesRepository officesRepository;
 
     @GetMapping("/")
     public String getIndex(){
@@ -96,6 +102,8 @@ public class MainController {
         List<Provinces> provincesList=provinceService.getProvinces();
         List<Customer> customers=customerService.getCustomers();
         List<Paises> paises=paisService.getPaises();
+        List<Offices> offices=officesRepository.getOffices();
+        model.addAttribute("offices",offices);
         model.addAttribute("paises",paises);
         model.addAttribute("provinces",provincesList);
         model.addAttribute("customers",customers);
@@ -131,8 +139,8 @@ public class MainController {
     @GetMapping("/employeesDTO")
     public String getEmployeesDTO(Model model) {
         List<Employee> employees = employeeService.getEmployees();
-        List<EmployeeDTO> employeesDTO = employeeMapper.toEmployeeDTOList(employees);
-        model.addAttribute("employees", employeesDTO);
+       /* List<EmployeeDTO> employeesDTO = employeeMapper.toEmployeeDTOList(employees);
+        model.addAttribute("employees", employeesDTO);*/
         return "employeesDTO";
     }
 }

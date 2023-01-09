@@ -1,5 +1,6 @@
 package com.example.demo.model.customer;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +20,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     Page<Customer> findCustomers(Pageable pageable);
     @Query(value = "SELECT * FROM customer where id=:id", nativeQuery = true)
     Customer findCustomerById(@Param("id") int id);
-    @Modifying
-    @Query(value = "UPDATE customer SET name =:name WHERE id = :id",nativeQuery = true)
+
+     @Modifying
+     @Transactional
+     @Query(value = "UPDATE customer SET name =:name WHERE id = :id",nativeQuery = true)
     void updateCustomer(@Param("name") String name, @Param("id") Integer id);
 }

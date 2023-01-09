@@ -1,6 +1,7 @@
 package com.example.demo.model.employee;
 
 import com.example.demo.model.customer.Customer;
+import com.example.demo.model.officce.Offices;
 import com.example.demo.model.provinces.Provinces;
 import jakarta.persistence.*;
 
@@ -10,66 +11,67 @@ import java.util.Date;
 * */
 @Entity
 public class Employee {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    private Integer id;
-
+   @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    private int idemployee;
+    private String hash;
+    private Date startdate;
     private String name;
-
     private String lastname;
+    private Date  fechaNacimiento;
+    private String idcard;
+   private String ssnumber;
+   private  String address;
+    private String zip;
+    private  String city;
 
-    private Date fechaNacimiento;
+    @ManyToOne
+    @JoinColumn(name="idprovince", nullable=false)
+    private Provinces idprovince;
 
-    private  String idcard;
-
-    private String ssnumber;
-
-    private String address;
-    private  String zip;
-
-
-
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = Provinces.class)
-    @JoinColumn(name="id_province_id")
-    private Provinces idProvince;
-
-    private String country;
+    private String  country;
     private String tel;
     private String email;
-
     private String iban;
-@ManyToOne(cascade = CascadeType.ALL ,targetEntity = Customer.class)
-    private  Customer idCustomer;
-
-    private  int isDelete;
-
-    private  String area;
+    @ManyToOne
+    @JoinColumn(name="id", nullable=false)
+    private Customer idcustomer;
+    private String rgpd;
+    private String area;
     private String job;
     private String notes;
+    private  String category;
+    private Date leavingdate;
+    private String nip;
+    private String baseline;
+    private String idschedule;
 
-    private String category;
+    @ManyToOne
+    private Offices idOffice;
 
-    private Date startDate;
-
-
-
-
-    public Employee() {
+    public int getIdemployee() {
+        return idemployee;
     }
 
-
-
-    public Employee(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    public void setIdemployee(int idemployee) {
+        this.idemployee = idemployee;
     }
 
-    public Integer getId() {
-        return id;
+    public String getHash() {
+        return hash;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public Date getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(Date startdate) {
+        this.startdate = startdate;
     }
 
     public String getName() {
@@ -128,12 +130,20 @@ public class Employee {
         this.zip = zip;
     }
 
-    public Provinces getIdProvince() {
-        return idProvince;
+    public String getCity() {
+        return city;
     }
 
-    public void setIdProvince(Provinces idProvince) {
-        this.idProvince = idProvince;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Provinces getIdprovince() {
+        return idprovince;
+    }
+
+    public void setIdprovince(Provinces idprovince) {
+        this.idprovince = idprovince;
     }
 
     public String getCountry() {
@@ -168,20 +178,20 @@ public class Employee {
         this.iban = iban;
     }
 
-    public Customer getIdCustomer() {
-        return idCustomer;
+    public Customer getIdcustomer() {
+        return idcustomer;
     }
 
-    public void setIdCustomer(Customer idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setIdcustomer(Customer idcustomer) {
+        this.idcustomer = idcustomer;
     }
 
-    public int getIsDelete() {
-        return isDelete;
+    public String getRgpd() {
+        return rgpd;
     }
 
-    public void setIsDelete(int isDelete) {
-        this.isDelete = isDelete;
+    public void setRgpd(String rgpd) {
+        this.rgpd = rgpd;
     }
 
     public String getArea() {
@@ -216,11 +226,43 @@ public class Employee {
         this.category = category;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getLeavingdate() {
+        return leavingdate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setLeavingdate(Date leavingdate) {
+        this.leavingdate = leavingdate;
+    }
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+
+    public String getBaseline() {
+        return baseline;
+    }
+
+    public void setBaseline(String baseline) {
+        this.baseline = baseline;
+    }
+
+    public String getIdschedule() {
+        return idschedule;
+    }
+
+    public void setIdschedule(String idschedule) {
+        this.idschedule = idschedule;
+    }
+
+    public Offices getIdOffice() {
+        return idOffice;
+    }
+
+    public void setIdOffice(Offices idOffice) {
+        this.idOffice = idOffice;
     }
 }

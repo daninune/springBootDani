@@ -105,6 +105,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-4">
+            <label>Oficina</label>
+            <select name="country" class="form-control" th:field="*{country}">
+                <option th:each="office : ${offices}"  th:value="${office.id}" th:text="${office.name}"/>
+
+            </select>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12">
             <input type="submit" class="btn btn-primary" value="guardar">
             <span class="glyphicon glyphicon-search"></span>

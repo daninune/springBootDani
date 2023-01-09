@@ -59,7 +59,7 @@
          th:each="pageNumber : ${pageNumbers}" style=>
 
         <a th:href="@{/customers(size=${customerPage.size}, page=${pageNumber})}"
-           th:text=${pageNumber} class="page-item"
+           th:text=${pageNumber} class="btn"
            th:class="${pageNumber==customerPage.number + 1} ? active"></a>
     </nav>
 </div>

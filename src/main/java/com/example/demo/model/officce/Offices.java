@@ -8,19 +8,19 @@ public class Offices {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column(name = "id")
     private Integer id;
-    @Column(name = "office")
-    private String office;
+    @Column(name = "name")
+    private String name;
 
     public Integer getId() {
         return id;
     }
 
-    public void setOffice(String office) {
-        this.office = office;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOffice() {
-        return office;
+    public String getName() {
+        return name;
     }
 
     public void setId(Integer id) {
