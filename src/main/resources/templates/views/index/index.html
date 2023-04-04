@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/templates/head :: head}"></head>
+
+<script th:src="@{/js/bootstrap-year-calendar.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap-year-calendar.css}"/>
+
+<body class="container">
+<div th:replace="~{/fragments/templates/header :: header}"></div>
+<div class="row page-body">
+
+    <nav id="navbar" th:replace="~{/fragments/templates/navbar :: navbarL0}"></nav>
+    <div class="col-10" id="container">
+
+        <div id="title" th:replace="~{/views/index/fragments/indexTitle :: indexTitleEmployee}"></div>
+
+        <div class="col-md-12 pb-1 separator">
+            <hr class="solid">
+        </div>
+
+        <div id="calendarIndex" style="padding-bottom: 20px;"></div>
+
+        <div class="col-md-12 pb-1 separator">
+            <hr class="solid">
+        </div>
+
+        <div id="bottom" th:replace="~{/views/index/fragments/indexBottom :: indexBottomEmployee}"></div>
+
+    </div>
+</div>
+<div th:replace="~{/fragments/templates/footer :: footer}"></div>
+</body>
+
+</html>

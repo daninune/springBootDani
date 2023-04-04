@@ -1,0 +1,27 @@
+<div class="row text-center justify-content-center mb-2" th:fragment="indexBottomEmployee">
+    <div class="row col-md-4 ">
+        <h5>Datos Personales</h5>
+        <div class="col-md-12">
+            <div th:text="'Nombre: ' + ${name}"></div>
+            <div th:text="'id: ' + ${id}"></div>
+            <a class="btn text-right" data-target="#editUserModal" data-toggle="modal"
+               th:href="@{/main/employeedata}" type="button">
+                <lord-icon
+                        src="https://cdn.lordicon.com/wloilxuq.json"
+                        style="width:45px;height:45px"
+                        trigger="hover">
+                </lord-icon>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4 border border-top-0 border-bottom-0">
+        <h5>Datos Profesionales</h5>
+        <div th:text="'Email: ' + ${email}"></div>
+        <div th:text="'Sesión: ' + ${sessionId}"></div>
+    </div>
+    <div class="col-md-4">
+        <h5>Datos Laborales</h5>
+        <div th:text="'Fichajes: Esta semana has fichado X días'"></div>
+        <div th:text="'Vacaciones: Llevas gastados X días'"></div>
+    </div>
+</div>

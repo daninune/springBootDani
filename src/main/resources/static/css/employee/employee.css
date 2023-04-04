@@ -1,0 +1,37 @@
+.box-card{
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.data-card{
+    flex: 1;
+    border-radius: 14px;
+    border: 1px solid #adb5bd;
+    min-width: 600px;
+    box-shadow: 0px -1px 12px 1px #aaacb145 !important;
+}
+
+.data-card > :first-child {
+    position: relative;
+    top: -15px;
+    background-color: white;
+    width: 250px;
+}
+
+label {
+    margin-bottom: .25rem!important;
+}
+
+
+@media screen and (max-width: 920px) {
+    .data-card{
+        min-width: 271px;
+    }
+}
+
+input[readonly] {
+            background-color: #f8f9fa;
+            border-color: #ced4da;
+            opacity: 0.75;
+            cursor: not-allowed;
+        }

@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/templates/head :: head"></head>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/bootstrap-clockpicker.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js }"></script>
+<script th:src="@{/js/bootstrap-datepicker.es.js }"></script>
+<script th:src="@{/js/timetrack.js}"></script>
+<script th:src="@{/js/timetrackFunctions.js}"></script>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+      rel="stylesheet"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap-clockpicker.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.min.css}"/>
+
+<body class="container">
+<div th:replace="~{/fragments/templates/header :: header}"></div>
+<div class="row page-body">
+    <nav id="navbar" th:replace="~{/fragments/templates/navbar :: navbarL0}"></nav>
+    <div class="col-10" id="container">
+        <div class="container-fluid central-wrapper pb-2 ">
+            <div class="row d-flex justify-content-center" style="margin: 20px 0px;">
+
+                <div th:replace="~{views/timetrack/fragments/timetrackForm :: timetrackForm(${proyectos})}"></div>
+            </div>
+
+            <div th:replace="~{views/timetrack/fragments/weekTimetrackView :: weekView}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/templates/head :: head}"></head>
+<script defer="defer" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+<link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+<script th:src="@{/js/tables.js}"></script>
+<link rel="stylesheet" th:href="@{/css/tables.css}"/>
+
+<body class="container">
+<div th:replace="~{/fragments/templates/header :: header}"></div>
+<div class="row page-body">
+    <nav id="navbar" th:replace="~{/fragments/templates/navbar :: navbarL0}"></nav>
+
+    <div class="col-10" id="container">
+        <div th:replace="~{/fragments/templates/tabla :: table}"></div>
+    </div>
+</div>
+<div th:replace="~{/fragments/templates/footer :: footer}"></div>
+</body>
+
+</html>

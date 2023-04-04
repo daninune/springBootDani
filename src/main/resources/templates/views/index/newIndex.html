@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/templates/head :: head}"></head>
+
+<script th:src="@{/js/bootstrap-year-calendar.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap-year-calendar.css}"/>
+
+<body>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="~{/fragments/templates/sidebar-navigation.html :: sidebar-nav}"></div>
+        <main class="col py-3">
+
+            <div id="title" th:replace="~{/views/index/fragments/indexTitle :: indexTitleEmployee}"></div>
+
+            <div class="col-md-12 pb-1 separator">
+                <hr class="solid">
+            </div>
+
+            <div id="calendarIndex" ></div>
+
+            <div class="col-md-12 pb-1 separator">
+                <hr class="solid">
+            </div>
+
+            <div id="bottom" th:replace="~{/views/index/fragments/indexBottom :: indexBottomEmployee}"></div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

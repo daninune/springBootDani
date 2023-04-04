@@ -1,0 +1,7 @@
+.alert {
+    background-color: aliceblue;
+    padding: 15px;
+    margin: 23px;
+    border: 1px solid mediumvioletred;
+    border-radius: 4px;
+}

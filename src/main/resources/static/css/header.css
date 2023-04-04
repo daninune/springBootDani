@@ -1,0 +1,355 @@
+/*//////////////////////////////////////////////////////////////////
+[ ATTRIBUTES ]*/
+:root {
+    --nunegal01: #010183;
+    --nunegal02: #959494;
+    --nunegal03: #006A6A;
+    --nunegal04: #00006A;
+    --nunegal05: #24A8A4;
+
+    --textcolor01: #f4f4f4;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ COMMON ]*/
+
+body {
+    width: 100%;
+    height: 100%;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.page-body {
+    min-height: 90%;
+    max-width: 100%;
+    margin: 0;
+    background-color: #000;
+}
+
+.container {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+}
+
+#container {
+    background-color: #ffffff;
+    max-width: calc(100% - 15rem);
+}
+
+a:hover {
+    background-color: yellow;
+    text-decoration: none;
+}
+
+
+.main {
+    height: 90%;
+}
+
+.allheight {
+    min-height: 100%;
+    height: 100%;
+}
+
+.logoCompany {
+    object-fit: contain;
+}
+
+.nav-wrapper {
+    width: 15%;
+    min-height: 85%;
+    float: left;
+    background-color: black;
+}
+
+.btn-body {
+    background-color: var(--nunegal01);
+    color: var(--textcolor01);
+}
+
+.central-wrapper {
+    padding: 0.5em;
+
+}
+
+.central {
+    width: 95%;
+    height: 100%;
+    overflow: auto;
+}
+
+
+input {
+    outline: none;
+    background-color: transparent;
+    color: black;
+    border-radius: 25px;
+    box-shadow: 0px 0px 0px 0px;
+}
+
+input:focus {
+    -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+    animation: anim-shadow 0.5s ease-in-out forwards;
+    outline: none;
+    border: none;
+}
+
+
+@-webkit-keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 10px 5px rgba(121, 121, 171, 0.6);
+
+    }
+}
+
+@keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 10px 5px rgba(121, 121, 171, 0.6);
+    }
+}
+
+.separator {
+    text-align: -webkit-center;
+    text-align: -moz-center;
+}
+
+.central div hr {
+    width: 50%;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ HEADER(NAVBAR) ]*/
+
+.header {
+    height: 5%;
+    background-color: var(--nunegal01);
+    color: var(--textcolor01);
+    max-height: 5%;
+    width: 100%;
+    margin: 0;
+}
+
+.header-logo-container {
+    max-height: 100%;
+}
+
+.navbar-brand {
+    width: 15%;
+}
+
+.logo-header {
+    object-fit: cover;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.btn-header {
+    background-color: transparent;
+    color: #f4f4f4;
+}
+
+.container-user {
+    height: 100%;
+}
+
+.dropdown {
+    display: contents;
+}
+
+.header .dropdown-menu {
+    position: absolute;
+    right: 0 !important;
+    left: auto !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.user-display-logo, .user-display-text {
+    align-self: center;
+}
+
+.header .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
+.header li > a:after {
+    display: none;
+}
+
+.header-ul {
+    border-radius: 4px 4px 0 0;
+    background-color: #ffffff;
+    padding: 7px 10px;
+    border-bottom: 1px solid #f4f4f4;
+    color: var(--textcolor01);
+    font-size: 14px;
+}
+
+.dropdown {
+    margin-right: 5em;
+}
+
+.dropdown-menu-over .menu {
+    max-height: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ SIDEBAR ]*/
+
+
+.sidebar {
+    background-color: #000;
+    transition: all 0.5s ease-in-out;
+}
+
+.bg-default {
+    background-color: #222;
+}
+
+
+.sidebar li a, .sidebar li a.collapsed.active {
+    display: block;
+    padding: 15px 0 0 2em;
+    color: var(--textcolor01);
+    border-left: 0 solid #dedede;
+    text-decoration: none
+}
+
+.sidebar li a.active {
+    background-color: #000;
+    border-left: 5px solid #dedede;
+    transition: all 0.5s ease-in-out
+}
+
+.sidebar li a:hover {
+    background-color: #000 !important;
+}
+
+.sidebar li a i {
+    padding-right: 5px;
+}
+
+.sidebar ul li .sub-menu li a {
+    position: relative
+}
+
+.sidebar ul li .sub-menu li a:before {
+    font-family: FontAwesome, serif;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.sidebar ul li .sub-menu li a:hover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    background-color: red;
+    height: 100%;
+}
+
+.sidebar ul li .sub-menu li a:hover {
+    background-color: #222;
+    padding-left: 20px;
+    transition: all 0.5s ease-in-out
+}
+
+.sub-menu {
+    border-left: 5px solid #dedede;
+}
+
+.sidebar li a .nav-label, .sidebar li a .nav-label + span {
+    transition: all 0.5s ease-in-out
+}
+
+
+.sidebar.fliph li a .nav-label, .sidebar.fliph li a .nav-label + span {
+    display: none;
+    transition: all 0.5s ease-in-out
+}
+
+.sidebar.fliph {
+    width: 42px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.sidebar.fliph li {
+    position: relative
+}
+
+.sidebar.fliph .sub-menu {
+    position: absolute;
+    left: 39px;
+    top: 0;
+    background-color: #00006a;
+    width: 150px;
+    z-index: 100;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ USER-PANEL ]*/
+
+
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+}
+
+.user-panel > .image > img {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+}
+
+.user-panel > .info, .user-panel > .info > a {
+    color: var(--textcolor01);
+}
+
+.user-panel > .info > p {
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 25px 15px;
+    border-bottom: 1px solid;
+}
+
+.user-panel > .info {
+    padding: 5px 5px 5px 15px;
+    line-height: 1;
+    position: absolute;
+    left: 55px;
+}
+
+.fliph .user-panel {
+    display: none;
+}

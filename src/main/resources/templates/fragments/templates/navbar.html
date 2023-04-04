@@ -1,0 +1,29 @@
+<link rel="stylesheet" th:href="@{../../css/leftBar.css}"/>
+<nav class="sidebar col-2" th:fragment="navbarL0">
+
+    <div class="sidebar left ">
+        <ul class="list-sidebar bg-default">
+            <li class="nav-label">
+                <a th:href="@{/timetrack}">
+                    <i class="fa fa-files-o"></i>
+                    <span class="nav-label" th:text="#{nav.timetrack}"></span></a>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/project}">
+                    <i class="fa fa-laptop"></i>
+                    <span class="nav-label">Proyectos</span>
+                </a>
+            </li>
+            <li class="nav-label">
+                <a th:href="@{/prueba/test/tabla}">
+                    <i class="fa fa-files-o"></i>
+                    <span class="nav-label"> Test Tabla</span>
+                </a>
+            </li>
+            <li><a href=""> opcion 2</a></li>
+            <li><a href=""> opcion 3</a></li>
+            <li><a href=""> opcion 4</a></li>
+        </ul>
+    </div>
+</nav>

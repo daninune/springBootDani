@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{/fragments/templates/head :: head}"></head>
+
+<body class="container">
+<div th:replace="~{/fragments/templates/header :: header}"></div>
+<div class="row page-body">
+    <nav id="navbar" th:replace="~{/fragments/templates/navbar :: navbarL0}"></nav>
+    <div class="col-10" id="container">
+        <div th:text="'name: ' + ${name}"></div>
+        <div th:text="'id: ' + ${id}"></div>
+        <div th:text="'email: ' + ${email}"></div>
+        <div th:text="'role: ' + ${role}"></div>
+        <div th:text="'permission: ' + ${permission}"></div>
+        <div th:text="'sessionId: ' + ${sessionId}"></div>
+
+        <a class="btn btn-body" href="/main/admin" type="button">Go to Admin</a>
+        <a class="btn btn-body" data-target="#editUserModal" data-toggle="modal"
+           th:href="@{/main/editUserModal/{id}(id=${id})}" type="button">Edit my user</a>
+
+        <div th:replace="fragments/tabla :: table"></div>
+    </div>
+</div>
+<div th:replace="~{/fragments/templates/footer :: footer}"></div>
+</body>
+
+</html>

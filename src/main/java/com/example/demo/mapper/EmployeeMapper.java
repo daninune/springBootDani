@@ -1,28 +1,32 @@
 package com.example.demo.mapper;
 
+import com.example.demo.dto.EditProfileDTO;
 import com.example.demo.dto.EmployeeDTO;
-import com.example.demo.dto.UserDTO;
-import com.example.demo.model.employee.Employee;
-import com.example.demo.model.user.User;
-import jdk.jfr.Name;
+import com.example.demo.model.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper {
-/*
-    @Named("toEmployeeDTO")
-    EmployeeDTO toEmployeeDTO(Employee employee);
-    @Named("toEmployee")
-    Employee toEmployee(EmployeeDTO employeeDTO);
+    EmployeeDTO employeeToEmployeeDTO(Employee employee);
 
-    @Named("toEmployeeDTOList")
-    List<EmployeeDTO> toEmployeeDTOList(List<Employee> employees);
-    @Name("toEmployeeList")
-    List<Employee> toEmployeeList(List<EmployeeDTO> employeesDTO);
-    @Named("toUser")
-    User userDtoToUser(UserDTO userDto);*/
+    Employee employeeDTOtoEmployee(EmployeeDTO employeeDTO);
+
+    List<EmployeeDTO> toEmployeesDTOs(List<Employee> employees);
+
+    List<Employee> toEmployees(List<EmployeeDTO> employeeDTOs);
+
+    @Mapping(target = "fechaNacimiento", dateFormat = "YYYY-MM-dd")
+    @Mapping(target = "startdate", dateFormat = "YYYY-MM-dd")
+    @Mapping(target = "leavingdate", dateFormat = "YYYY-MM-dd")
+    EditProfileDTO toEditProfileDTO(Employee employee);
+
+    @Mapping(target = "fechaNacimiento", expression = "java((editProfileDTO.getFechaNacimiento() == null || editProfileDTO.getFechaNacimiento().isEmpty()) ? null : editProfileDTO.getFechaNacimiento())")
+    @Mapping(target = "startdate", expression = "java((editProfileDTO.getStartdate() == null || editProfileDTO.getStartdate().isEmpty()) ? null : editProfileDTO.getStartdate())")
+    @Mapping(target = "leavingdate", expression = "java((editProfileDTO.getLeavingdate() == null || editProfileDTO.getLeavingdate().isEmpty()) ? null : editProfileDTO.getLeavingdate())")
+    @Mapping(target = "id", source = "employeeId")
+    Employee toEntity(EditProfileDTO editProfileDTO, Integer employeeId);
+
 }

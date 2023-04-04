@@ -1,0 +1,20 @@
+<div class="m-2 p-2" th:fragment="table">
+    <div class="row">
+        <div class="col-md">
+            <table border="1" class="table table-striped" id="table" width="100%">
+                <thead>
+                <tr>
+                    <th th:each="campo: ${cabezeras}"><span th:text="${campo}"></span></th>
+                </tr>
+
+                </thead>
+                <tbody>
+                <tr th:each="area : ${lista}">
+                    <td><span th:text="${area.getId()}"></span></td>
+                    <td><span th:text="${area.getNombre()}"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

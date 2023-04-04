@@ -1,66 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta content="text/html; charset= utf-8">
+    <title>Login page</title>
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
 </head>
+
 <body>
+<div class="login-limiter">
+    <div class="login-container">
+        <div class="wrap-login">
+            <div class="login-pic">
+                <img th:src="@{/img/thumbnail_N_fondo_trasparente.png}"/>
+            </div>
 
-<body class="text-center">
+            <div class="login-right">
+                <!--<div class="mb-4 login-lenguages">
+                    <a class="btn btn-primary" th:href="@{/change(lang='en')}">En</a>
+                    <a class="btn btn-primary" th:href="@{/change(lang='es')}">Es</a>
+                    <a class="btn btn-primary" th:href="@{/change(lang='ch')}">Cn</a>
+                </div>-->
 
+                <form class="login-form text-center" method="post" th:action="@{/login}">
 
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<div class="row"></div>
-<br>
-<center>
-    <h2 class="h3 mb-3 font-weight-normal"> Iniciar Sesion</h2>
-</center>
+                    <form class="login100-form validate-form">
+					<span class="login100-form-title" th:text="#{login.title}"></span>
 
+                    <div class="mt-4 mb-4 wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" id="username" name="username" placeholder="Email" type="text">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                        </svg>
+						</span>
+                    </div>
 
-<form action="#" th:action="@{/login}" th:object="${user}"  method="post">
-    <div class="row">
-        <div class="col-3">
+                    <div class="mb-4 wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" id="password" name="password" placeholder="Password" type="password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+                            </svg>
+						</span>
+                    </div>
 
-        </div>
-        <div class="col-6">
-            Usuario:
-            <input id="name" name="name" class="form-control" type="text" th:field="*{username}" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
+                    <div class="mb-4 container-login100-form-btn">
+                        <button class="login100-form-btn" th:text="#{login.submit}" type="submit"></button>
+                    </div>
 
-        </div>
-        <div class="col-6">
-            Contraseña
-             <input id="contrast" name="contrast" class="form-control" type="password" th:field="*{contrast}" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-
-        </div>
-        <div class="col-6"><button class="btn btn-lg btn-primary btn-block" type="submit" id="login-button">Entrar</button>
-
+                </form>
+            </div>
         </div>
     </div>
-</form>
-
-
+</div>
 </body>
 </html>

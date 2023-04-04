@@ -1,0 +1,117 @@
+<nav th:fragment="sidebar-nav" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 shadow">
+
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+        <a href="/" class="d-flex align-items-center mb-md-0 text-decoration-none">
+
+            <a href="#" class="nav-link align-middle px-0">
+                <img th:src="@{/img/thumbnail_N_fondo_trasparente.png}" style="width: 65px;">
+                <p class="portalEmpleado ms-3 d-none d-sm-inline">Portal del Empleado</p>
+            </a>
+            <!--            <span class="fs-5 d-none d-sm-inline nav-link align-middle px-0">-->
+            <!--                <img th:src="@{/img/thumbnail_N_fondo_trasparente.png}" style="width: 65px;">-->
+            <!--                <span class="ms-3 d-none d-sm-inline">Portal del Empleado</span>-->
+            <!--            </span>-->
+        </a>
+        <hr>
+
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-left align-items-sm-start" id="menu">
+            <li class="dropdown pb-4">
+                <a href="#" th:title="#{login.profile}" class=" icon-sidebar d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fs-4 bi bi-person-square"></i>
+                    <span class="ms-3 d-none d-sm-inline mx-1" th:text="${name}">user</span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" th:href="@{/main/employee/employeedata}" th:text="#{login.profile}">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/logout" th:text="#{login.logout}">Log out</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="icon-sidebar nav-link align-middle px-0">
+                    <i class="fs-4 bi-house"></i>
+                    <span class="ms-3 d-none d-sm-inline">Home</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/timetrack}" th:title="#{nav.timetrack}" class=" icon-sidebar nav-link px-0 align-middle">
+                    <i class="fs-4 bi bi-clock-history"></i>
+                    <span class="ms-3 d-none d-sm-inline" th:text="#{nav.timetrack}" >Timetraking</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/project}" th:title="#{nav.project}" class=" icon-sidebar nav-link px-0 align-middle">
+                    <i class="fs-4 bi bi-bar-chart-steps"></i>
+                    <span class="ms-3 d-none d-sm-inline" th:text="#{nav.project}">Proyectos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#submenu2" data-bs-toggle="collapse" class="icon-sidebar nav-link px-0 align-middle ">
+                    <i class="fs-4 bi-bootstrap"></i>
+                    <span class="ms-3 d-none d-sm-inline">Bootstrap</span>
+                </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Item</span>
+                            1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Item</span>
+                            2
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#submenu3" data-bs-toggle="collapse" class="icon-sidebar nav-link px-0 align-middle">
+                    <i class="fs-4 bi-grid"></i>
+                    <span class="ms-3 d-none d-sm-inline">Products</span>
+                </a>
+                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Product</span>
+                            1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Product</span>
+                            2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Product</span>
+                            3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon-sidebar nav-link px-0">
+                            <span class="d-none d-sm-inline">Product</span>
+                            4
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="icon-sidebar nav-link px-0 align-middle">
+                    <i class="fs-4 bi-people"></i>
+                    <span class="ms-3 d-none d-sm-inline">Customers</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="permission">
+            <p class="text-danger">ROL: <span th:each="authority : ${authorities}" th:text="${authority}"></span></p>
+            <p class="text-danger">permission: <span th:each="permission : ${permissions}" th:text="${permission}"></span></p>
+        </div>
+        <hr>
+
+    </div>
+</nav>

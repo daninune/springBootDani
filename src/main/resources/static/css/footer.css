@@ -1,0 +1,45 @@
+/*//////////////////////////////////////////////////////////////////
+[ ATTRIBUTES ]*/
+
+
+/*//////////////////////////////////////////////////////////////////
+[ COMMON ]*/
+
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn-body {
+    background-color: var(--nunegal01);
+    color: var(--textcolor01);
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ FOOTER ]*/
+
+footer {
+    height: 5%;
+    /*position: fixed;*/
+    bottom: 0;
+    max-height: 5%;
+    float: right;
+    background-color: var(--nunegal02);
+    color: var(--textcolor01);
+    margin: 0 !important;
+}
+
+footer > div > div > a {
+    text-decoration: none;
+    color: var(--textcolor01);
+}
+
+footer > div > div > a:hover {
+    text-decoration: none;
+    color: var(--textcolor01);
+    transition-duration: 2s;
+}
+
+col-footer {
+    max-height: 100%;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="~{/fragments/templates/head :: head}"></head>
+
+    <script defer="defer" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/tables.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/tables.css}"/>
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"/>
+    <script th:src="@{/js/project.js}"></script>
+
+    <body class="container">
+        <div th:replace="~{/fragments/templates/header :: header}"></div>
+        <div class="row page-body">
+            <nav id="navbar" th:replace="~{/fragments/templates/navbar :: navbarL0}"></nav>
+
+            <div class="col-10" id="container">
+                <div class="m-2 p-2">
+                    <div class="row">
+                        <div class="col-md">
+                            <table border="1" class="table table-striped" id="table" width="100%">
+                                <button type="button" class="btn btn-primary newProject" data-bs-toggle="modal" data-bs-target="#editProjectModal" th:text="#{button.newProject}">new</button>
+                                <thead>
+                                    <tr>
+                                        <th th:text="#{thead.id}" >ID</th>
+                                        <th th:text="#{thead.name}" >Name</th>
+                                        <th th:text="#{thead.computable}" >Computable</th>
+                                        <th th:text="#{thead.option}" >Option</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="project:${projectList}">
+                                        <td th:text="${project.id}">ID</td>
+                                        <td th:text="${project.name}">Name</td>
+                                        <td th:text="${project.computable}? #{yes} : #{no}">Computable</td>
+                                        <td>
+                                            <button   type="button" class="btn btn-outline-primary edit-button" data-bs-toggle="modal" data-bs-target="#editProjectModal" th:data-project-name="${project.name}" th:data-project-id="${project.id}"  th:data-project-computable="${project.computable}"  th:text="#{button.edit}">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger delete-button" data-bs-toggle="modal" data-bs-target="#deleteProjectModal" th:data-project-name="${project.name}" th:data-project-id="${project.id}" th:text="#{button.delete}">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Project Modal -->
+        <div class="modal" id="deleteProjectModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" >Modal - Message</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p th:text="#{modalMessage.deleteMessage}" > Modal - Message </p>
+                        <span id="project-name"></span>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <a id="project-delete-button" th:data-target="@{/project/delete(id=)}">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" th:text="#{button.delete}">Delete</button>
+                        </a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" th:text="#{button.cancel}">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit, New Project Modal -->
+        <div class="modal" id="editProjectModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title from-title">Modal - Message</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <form method="post" th:action="@{/project/submit}" th:object="${newProject}">
+                        <div class="modal-body">
+
+                                <div class="form-name">
+                                    <input id="from-Id-Project" type="text" name="id" th:field="*{id}" style="display:none" value="">
+                                    <label for="from-Name-Project" th:text="#{modalMessage.nameProject}" >Name project</label>
+                                    <input name="project" id="from-Name-Project" th:field="*{name}" type="text" class="form-control" th:placeholder="#{modalMessage.nameProject}" required>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" for="computableProjectCheck" th:text="#{modalMessage.computable}" >* Check Computable</label>
+                                    <input name="computable" th:field="*{computable}" type="checkbox" class="form-check-input" id="computableProjectCheck">
+                                </div>
+
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" th:text="#{button.save}" >Save</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" th:text="#{button.cancel}">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="~{/fragments/templates/footer :: footer}"></div>
+    </body>
+</html>

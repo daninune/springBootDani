@@ -1,0 +1,13 @@
+.icon-sidebar {
+    color: var(--nunegal01);
+}
+
+.portalEmpleado{
+    vertical-align: sub;
+    white-space: nowrap;
+}
+
+.permission{
+    position: absolute;
+    bottom: 10px;
+}

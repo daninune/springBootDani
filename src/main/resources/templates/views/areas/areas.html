@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script type="text/javascript" th:src="@{/js/jquery-1.4.4.min.js}"></script>
+    <!--<script type="text/javascript" th:src="@{/js/areas.js}"></script>-->
+
+    <link th:href="@{/css/tables.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="row">
+
+    <div class="col-sm">
+
+        <a th:href="@{/change(lang='en')}" class="btn btn-primary" >Ingles</a>
+        <a th:href="@{/change(lang='es')}" class="btn btn-primary" >Español</a>
+    </div>
+</div>
+<div><label th:text="#{areas.title}"></label></div>
+<div class="row">
+    <div class="col-auto mr-auto"></div>
+    <div class="col-sm"></div>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+        <form action="#" th:action="@{/areas}" th:object="${area}"  method="post">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionExample" aria-expanded="true" aria-controls="collapseOne">
+                        <label th:text="#{filer}"></label>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="row">
+                    <div class="card-body">
+                        <div class="col-sm-3">
+
+                            <label th:text="#{filer}"></label>
+                           <input  name="nombre" class="form-control" type="text" th:field="*{nombre}" />
+                         </div>
+                        <div class="col-sm-3">
+                           <input type="submit" class="btn btn-primary" th:text="#{filer}" >
+                           <span class="glyphicon glyphicon-search"></span>
+                          </input>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    <div class="col-auto mr-auto"></div>
+</div>
+</div>
+
+
+
+<br/>
+<br/>
+
+<div class="row">
+    <div class="col-auto mr-auto"></div>
+    <div class="col-sm">
+
+        <table border="1" width="100%"  class="table">
+            <thead>
+
+            </thead>
+            <tbody>
+            <tr>
+
+                <th width="80%"><label th:text="#{name}"></label></th>
+                <th width="10%"></th>
+                <th width="10%"></th>
+            </tr>
+
+            <tr th:each="area : ${areas}">
+                <!-- http://localhost:8080/spring-mvc-basics/foos?id=abc
+                <a th:href="@{/index(param1='value1',param2='value2')}">
+
+                -->
+
+                <td><span th:text="${area.getNombre()}"></span></td>
+                <td align="center">
+                    <a th:href="@{/edit(id=${area.getId()})}"  class="btn btn-primary" >
+                        <img th:src="@{/img/pencil.png}" />
+                    </a>
+                </td>
+                <td align="center">
+                    <a th:href="@{/deleteArea(id=${area.getId()})}" class="btn btn-danger btn-lg"  >
+                        <img th:src="@{/img/bin.png}" />
+                    </a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-auto mr-auto"></div>
+</div>
+    <div class="col-auto mr-auto"></div>
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+    </div>
+<div class="row">
+    <div class="col-auto mr-auto"></div>
+    <div class="col-sm">
+        <a th:href="@{/areas/new}" class="btn btn-primary" ><label th:text="#{newArea}"></label></a>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+/*//////////////////////////////////////////////////////////////////
+[ ATTRIBUTES ]*/
+
+
+/*//////////////////////////////////////////////////////////////////
+[ HEADER(NAVBAR) ]*/
+
+.btn-header {
+    background-color: transparent;
+    color: var(--textcolor01);
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ SIDEBAR ]*/
+
+
+/*//////////////////////////////////////////////////////////////////
+[ MAIN ]*/
+
+.btn-body {
+    background-color: var(--nunegal01);
+    color: var(--textcolor01);
+}
+
+.btn-body:hover {
+    border: var(--nunegal04) solid 1px;
+}
+
+.btn-body:active {
+    box-shadow: 0px 0px 10px 5px var(--nunegal01);
+}
+
+
+/*.btn-cancel {
+    background-color: var(--nunegal02);
+    color: var(--nunegal01);
+}
+
+.btn-cancel:hover {
+    border: var(--nunegal02) solid 1px;
+}
+
+.btn-cancel:active {
+    box-shadow: 0px 0px 10px 5px var(--nunegal02);
+}*/
+
+/*
+.btn-ok {
+    background-color: var(--nunegal01);
+    color: var(--textcolor01);
+}
+
+.btn-ok:hover {
+    background-color: var(--nunegal03);
+    color: white;
+}
+
+.btn-ok:active {
+    background-color: var(--nunegal05);
+    color: white;
+    box-shadow: 0px 0px 10px 5px #17c4c0;
+}
+
+
+*/
+
+.newProject{
+    float: right;
+    margin: 10px;
+}

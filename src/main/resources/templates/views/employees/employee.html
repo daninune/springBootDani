@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/templates/head :: head"></head>
+<link rel="stylesheet" th:href="@{/css/employee/employee.css}"/>
+<script th:src="@{/js/editProfile.js}"></script>
+<body class="container">
+<div th:replace="/fragments/templates/header :: header"></div>
+
+<div class="row page-body">
+    <nav id="navbar" th:replace="/fragments/templates/navbar :: navbarL0"></nav>
+
+    <div class="col-10" id="container">
+        <div class="row mx-4 mt-4">
+            <form class="col-md-12 needs-validation" th:action="@{/main/employee/employeedata}" method="post" th:object="${editProfile}" novalidate>
+                <div class="row box-card">
+                    <div class="m-3 p-5 pt-0 data-card">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h4 class="fw-bold" th:text="#{form.personalInformation}">Personal information</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" th:text="#{form.name}">Name</label>
+                                <input type="text" class="form-control" id="name" th:field="*{name}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="2" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastname" th:text="#{form.lastname}">Last name</label>
+                                <input type="text" class="form-control" id="lastname" th:field="*{lastname}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('lastname')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="2" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="dni" th:text="#{form.dni}">ID Number</label>
+                                <input type="text" class="form-control" id="dni" th:field="*{idcard}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('idcard')} ? 'is-invalid' : ''"
+                                       pattern="^(?:(?:(?:X|Y|Z)?\d{7,8})([A-Z]))$" minlength="9" maxlength="10" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('idcard')}" th:errors="*{idcard}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="dateOfBirth"  th:text="#{form.dateOfBirth}">Date of Birth</label>
+                                <input type="date" class="form-control" id="dateOfBirth" th:field="*{fechaNacimiento}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('fechaNacimiento')} ? 'is-invalid' : ''"
+                                       pattern="^(19|20|21)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$" minlength="9" maxlength="10" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" th:text="#{form.phone}">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" th:field="*{tel}"
+                                       th:classappend="${#fields.hasErrors('tel')} ? 'is-invalid' : ''"
+                                       pattern="^(\+\d{1,3})?\d{1,14}$" minlength="9" maxlength="14" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" th:text="#{form.email}">Email</label>
+                                <input type="email" class="form-control" id="email" th:field="*{email}"
+                                       th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" minlength="4" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="socialSecurityNumber" th:text="#{form.socialSecurityNumber}" >Social Security Number</label>
+                                <input type="text" class="form-control" id="socialSecurityNumber" th:field="*{ssnumber}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('ssnumber')} ? 'is-invalid' : ''"
+                                       pattern="^\d{9,12}$" minlength="9" maxlength="12" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('ssnumber')}" th:errors="*{ssnumber}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="iban" th:text="#{form.iban}">IBAN</label>
+                                <input type="text" class="form-control" id="iban" th:field="*{iban}"
+                                       th:classappend="${#fields.hasErrors('iban')} ? 'is-invalid' : ''"
+                                       pattern="^[A-Za-z]{2}[0-9]{2}[A-Z0-9]{1,30}$" minlength="15" maxlength="34" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('iban')}" th:errors="*{iban}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 mb-3">
+                                <label for="address" th:text="#{form.address}">Address</label>
+                                <input type="text" class="form-control" id="address" th:field="*{address}"
+                                       th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''"
+                                       pattern="^[A-Za-z0-9\s,.\-\p{L}]*$" minlength="1" maxlength="200" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zip" th:text="#{form.zip}" >Zip</label>
+                                <input type="text" class="form-control" id="zip"  th:field="*{zip}"
+                                       th:classappend="${#fields.hasErrors('zip')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z0-9\s-]*$" minlength="1" maxlength="50" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="city" th:text="#{form.city}" >City</label>
+                                <input type="text" class="form-control" id="city" th:field="*{city}"
+                                       th:classappend="${#fields.hasErrors('city')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="1" maxlength="150" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('city')}" th:errors="*{city}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state" th:text="#{form.state}" >State</label>
+                                <input type="text" class="form-control" id="state" th:field="*{idprovince}"
+                                       th:classappend="${#fields.hasErrors('idprovince')} ? 'is-invalid' : ''"
+                                       pattern="^(100|[1-9]?[0-9])$" minlength="1" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('idprovince')}" th:errors="*{idprovince}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="country" th:text="#{form.country}">Country</label>
+                                <input type="text" class="form-control" id="country" th:field="*{country}"
+                                       th:classappend="${#fields.hasErrors('country')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="1" maxlength="150" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('country')}" th:errors="*{country}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-3 p-5 pt-0 data-card">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h4 class="fw-bold" th:text="#{form.workInformation}">Work Information</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="employeeNumber" th:text="#{form.employeeNumber}">Employee Number</label>
+                                <input type="text" class="form-control" id="employeeNumber" th:field="*{nip}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('nip')} ? 'is-invalid' : ''"
+                                       pattern="^[A-Za-z0-9]*$" minlength="1" maxlength="20" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nip')}" th:errors="*{nip}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="position" th:text="#{form.position}">Position</label>
+                                <input type="text" class="form-control" id="position" th:field="*{job}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('job')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="2" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('job')}" th:errors="*{job}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="category" th:text="#{form.category}">Category</label>
+                                <input type="text" class="form-control" id="category" th:field="*{category}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('category')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="2" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('category')}" th:errors="*{category}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="area" th:text="#{form.area}">Area</label>
+                                <input type="text" class="form-control" id="area" th:field="*{area}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('category')} ? 'is-invalid' : ''"
+                                       pattern="^[a-zA-Z\s\p{L}-]*$" minlength="2" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('area')}" th:errors="*{area}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="office" th:text="#{form.office}" >Office</label>
+                                <input type="text" class="form-control" id="office" th:field="*{idoffice}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('idoffice')} ? 'is-invalid' : ''"
+                                       pattern="^(100|[1-9]?[0-9])$" minlength="1" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('idoffice')}" th:errors="*{idoffice}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="schedule" th:text="#{form.schedule}" >Schedule</label>
+                                <input type="text" class="form-control" id="schedule" th:field="*{idschedule}"
+                                       th:classappend="${#fields.hasErrors('idschedule')} ? 'is-invalid' : ''"
+                                       pattern="^(100|[1-9]?[0-9])$" minlength="1" maxlength="100" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('idschedule')}" th:errors="*{idschedule}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="startDate" th:text="#{form.startDate}">Start date</label>
+                                <input type="date" class="form-control" id="startDate" th:field="*{startdate}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('startdate')} ? 'is-invalid' : ''"
+                                       pattern="^(19|20|21)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$" minlength="9" maxlength="10" required>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('startdate')}" th:errors="*{startdate}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="endDate" th:text="#{form.endDate}">End date</label>
+                                <input type="date" class="form-control" id="endDate" th:field="*{leavingdate}" th:readonly="${isDisabled}"
+                                       th:classappend="${#fields.hasErrors('leavingdate')} ? 'is-invalid' : ''"
+                                       pattern="^(19|20|21)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$" minlength="0" maxlength="10" >
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('leavingdate')}" th:errors="*{leavingdate}" ></div>
+                                <div class="invalid-feedback" th:text="#{valid.error}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-12 text-end">
+                        <button type="submit" class="btn btn-ok btn-outline-primary px-4" th:text="#{button.save}">Save</button>
+                        <button type="button" class="btn btn-cancel btn-outline-danger" onclick="location.href='/main/index'" th:text="#{button.cancel}">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div th:replace="/fragments/templates/footer :: footer"></div>
+</div>
+</body>
+
+</html>
+

@@ -1,0 +1,179 @@
+<!--/*@thymesVar id="proyectos" type="com.example.demo.model.Project[]"*/-->
+<!--/*@thymesVar id="timetrack" type="com.example.demo.model.Timetrack"*/-->
+<div th:fragment="timetrackForm(${proyectos})">
+    <div class="col d-flex justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                Nuevo registro
+            </div>
+
+            <div class="card-body">
+                <!-- Add Time Form -->
+                <form action="#" method="post" th:action="@{/timetrack/createTimetrack}" th:object="${timetrack}">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input class="form-control" id="description" name="description"
+                                   placeholder="-- Descripción --"
+                                   type="text">
+                        </div>
+
+                        <div class="col-md-4">
+                            <select class="form-select" id="idProject" name="idProject"
+                                    onchange='checkIsComputable(variable, 0)'
+                                    th:field="*{project}">
+                                <option value="">-- Proyecto --</option>
+
+                                <option th:each="project : ${proyectos}" th:text="${project.getName()}"
+                                        th:value="${project.getId()}"></option>
+                            </select>
+                        </div>
+
+                        <div class='col-md-4'>
+                            <select class='form-select' id='idUbication' name='idUbication' th:field="*{workplace}">
+                                <option value='null'>-- Lugar de trabajo --</option>
+                                <option th:value='Oficina'>Oficina</option>
+                                <option th:value='Teletrabajo'>Teletrabajo</option>
+                                <option th:value='Cliente'>Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='row g-3' style='margin-top: 1px;'>
+                        <div class='col-md-4' id="dateContainer">
+                            <div class='input-group'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-calendar-event" fill="currentColor" height="16"
+                                         width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                    </svg>
+                                </div>
+                                <input class='form-control datePicker' id='date' name='date' readonly='true'
+                                       style='background-color: white;' th:value="${today}" type='text'>
+                            </div>
+                        </div>
+                        <div class='col-md-4' id='dateEndDiv' style='display: none;'>
+                            <div class='input-group'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-calendar-week" fill="currentColor" height="16"
+                                         viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                    </svg>
+                                </div>
+                                <input class='form-control datePicker' id='dateEnd' name='dateEnd' readonly='true'
+                                       style='background-color: white;' th:value="${today}" type='text'>
+                            </div>
+                        </div>
+                        <div class='col-md-4' id="periodContainer">
+                            <div class='form-check' style='margin-top: 6px;'>
+                                <input class='form-check-input' id='datePeriod' name='datePeriod'
+                                       onclick='showDateEnd();' style='margin-top: 6px;' type='checkbox'>
+                                <label class='form-check-label' for='datePeriod'>
+                                    Periodo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='row g-3' style='margin-top: 1px;'>
+                        <div class='col-auto' id='timeInitContainer'>
+                            <div class='input-group' data-autoclose='true'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-hourglass-top" fill="currentColor" height="16"
+                                         viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5zm2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1h-7z"/>
+                                    </svg>
+                                </div>
+                                <input autocomplete='off' class='form-control clockPickerPM' id='timeInit'
+                                       name='timeInit'
+                                       placeholder='Hora inicio...' readonly
+                                       style='background-color: white;'
+                                       th:field="*{startTime}" type='text'>
+                            </div>
+                        </div>
+                        <div class='col-auto' id='timeEndContainer'>
+                            <div class='input-group' data-autoclose='true'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-hourglass-bottom" fill="currentColor" height="16"
+                                         viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702s.18.149.5.149.5-.15.5-.15v-.7c0-.701.478-1.236 1.011-1.492A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
+                                    </svg>
+                                </div>
+                                <input autocomplete='off' class='form-control clockPickerPM ' id='timeEnd'
+                                       name='timeEnd'
+                                       placeholder='Hora fin...' readonly style='background-color: white;'
+                                       th:field="*{endTime}" type='text'>
+                            </div>
+                        </div>
+                        <div class='col-auto' id='timeInitContainerShift' style='display: none;'>
+                            <div class='input-group' data-autoclose='true'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-hourglass-top" fill="currentColor" height="16"
+                                         viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 14.5a.5.5 0 0 0 .5.5h11a.5.5 0 1 0 0-1h-1v-1a4.5 4.5 0 0 0-2.557-4.06c-.29-.139-.443-.377-.443-.59v-.7c0-.213.154-.451.443-.59A4.5 4.5 0 0 0 12.5 3V2h1a.5.5 0 0 0 0-1h-11a.5.5 0 0 0 0 1h1v1a4.5 4.5 0 0 0 2.557 4.06c.29.139.443.377.443.59v.7c0 .213-.154.451-.443.59A4.5 4.5 0 0 0 3.5 13v1h-1a.5.5 0 0 0-.5.5zm2.5-.5v-1a3.5 3.5 0 0 1 1.989-3.158c.533-.256 1.011-.79 1.011-1.491v-.702s.18.101.5.101.5-.1.5-.1v.7c0 .701.478 1.236 1.011 1.492A3.5 3.5 0 0 1 11.5 13v1h-7z"/>
+                                    </svg>
+                                </div>
+                                <!--                                TODO completar periodo de tarde de inicio-->
+                                <input autocomplete='off' class='form-control clockPickerPM' id='timeInitShift'
+                                       name='timeInitShift'
+                                       placeholder='Segunda hora inicio...' readonly
+                                       style='background-color: white;' type='text'>
+                            </div>
+                        </div>
+                        <div class='col-auto' id='timeEndContainerShift' style='display: none;'>
+                            <div class='input-group' data-autoclose='true'>
+                                <div class='input-group-text'>
+                                    <svg class="bi bi-hourglass-bottom" fill="currentColor" height="16"
+                                         viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702s.18.149.5.149.5-.15.5-.15v-.7c0-.701.478-1.236 1.011-1.492A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
+                                    </svg>
+                                </div>
+                                <!--                                TODO completar periodo de tarde de fin-->
+                                <input autocomplete='off' class='form-control clockPickerPM' id='timeEndShift'
+                                       name='timeEndShift'
+                                       placeholder='Segunda hora fin...' readonly
+                                       style='background-color: white;' type='text'>
+                            </div>
+                        </div>
+                        <div class='col-auto' id='splitShiftContainer'>
+                            <div class='form-check' style='margin-top: 6px;'>
+                                <input class='form-check-input' id='splitShift' name='splitShift'
+                                       onclick='showHourShift();' style='margin-top: 6px;' type='checkbox'>
+                                <!--                                TODO enlace-->
+                                <!--                                <label class='form-check-label' for='shiftHours'>-->
+                                <label class='form-check-label'>
+                                    Turno partido
+                                </label>
+                            </div>
+                        </div>
+
+<!--                        Al cambiar el DTO da error -->
+<!--                        <div class='col-auto' id='extraHoursContainer'>-->
+<!--                            <div class='form-check' style='margin-top: 6px;'>-->
+<!--                                <input class='form-check-input' id='extraHours' name='extraHours'-->
+<!--                                       style='margin-top: 6px;' th:field="*{extra}" type='checkbox'>-->
+<!--                                <label class='form-check-label' for='extraHours'>-->
+<!--                                    Hora Extra-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                    <div class='row g-3' style='margin-top: 1px;'>
+                        <div class='text-center'>
+                            <!--  <button class="btn btn-outline-primary form-control" id="addButton"-->
+                            <!--       onclick="saveTracking(0, valor);" style="width: 210px;">Añadir-->
+                            <!--  </button>-->
+                            <input class="btn btn-outline-primary form-control" id="addButton"
+                                   style="width: 210px;" type="submit" value="Añadir">
+                            <!-- Duty Button -->
+                            <button class="btn btn-outline-secondary" onclick="showDutyForm(valor, false);"
+                                    style="width: 130px;"
+                                    type="button">Guardias
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

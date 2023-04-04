@@ -1,0 +1,22 @@
+<!--Fragment para Employee-->
+<div th:fragment="indexTitleEmployee">
+    <div class="p-2 m-2 pb-2 text-center">
+        <h2 th:text="#{index.titleEmployee}"></h2>
+    </div>
+    <div class="p-2 m-2 text-center">
+        <div th:text="'role: ' + ${role}"></div>
+        <div th:text="'permission: ' + ${permission}"></div>
+    </div>
+</div>
+
+
+<!--Fragment para Admin-->
+<div th:fragment="indexTitleAdmin">
+    <div class="p-2 m-2 pb-2 text-center">
+        <h2 th:text="#{index.titleAdmin}"></h2>
+    </div>
+    <div class="p-2 m-2 text-center">
+        <div th:text="'role: ' + ${role}"></div>
+        <div th:text="'permission: ' + ${permission}"></div>
+    </div>
+</div>

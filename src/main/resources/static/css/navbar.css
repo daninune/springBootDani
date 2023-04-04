@@ -1,0 +1,94 @@
+a:hover {
+    background-color: yellow;
+}
+.sidebardiv {
+    height: 95%;
+    max-width: 100%;
+}
+
+.sidebar {
+    max-width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+
+    background-color: #000;
+    transition: all 0.5s ease-in-out;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0;
+    min-width: 15rem;
+    min-height: 90vh;
+    position: sticky;
+}
+
+.list-sidebar {
+    height: 100%;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0px;
+
+    padding: 0px;
+}
+
+body, html {
+    height: 100%;
+}
+
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+}
+
+.user-panel > .image > img {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+}
+
+.user-panel > .info, .user-panel > .info > a {
+    color: #fff;
+}
+
+.user-panel > .info > p {
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 25px 15px;
+    border-bottom: 1px solid;
+}
+
+.user-panel > .info {
+    padding: 5px 5px 5px 15px;
+    line-height: 1;
+    position: absolute;
+    left: 55px;
+}
+
+.fliph .user-panel {
+    display: none;
+}
+
+.divlogo {
+    text-align: center;
+}
+
+.logotext > p {
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}

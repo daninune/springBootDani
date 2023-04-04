@@ -1,48 +1,42 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.model.employee.Employee;
-import com.example.demo.model.user.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.net.http.HttpClient;
+import java.util.Locale;
 
 @Controller
 public class LoginController {
-    private static final String SECRET_KEY_1 = "ssdkF$HUy2A#D%kd";
-    private static final String SECRET_KEY_2 = "weJiSEvR5yAC5ftB";
 
-    private IvParameterSpec ivParameterSpec;
-    private SecretKeySpec secretKeySpec;
-    private Cipher cipher;
-
-    @GetMapping("/login")
-    public String getIndex(Model model)
-    {
-        //HttpClient cli= HttpClient.newBuilder().build();
-        UserDTO u =new UserDTO();
-        model.addAttribute("user",u);
+    @RequestMapping({"", "/", "/login", "/index",})
+    public String getLogin() {
         return "login";
-
     }
-@PostMapping("/login")
-    public String login(@ModelAttribute("user")   UserDTO u, Model model){
 
-        //System.out.println(" username "+u.getUsername()+" contrasena "+u.getContrast()+" encripted username "+encripted);
+    @GetMapping("/change")
+    public String getAreas(Model model, @RequestParam String lang, HttpServletRequest request) {
+        System.out.println(" lang " + lang + " default locale " + Locale.getDefault());
 
-        if (u.getUsername().equals("admin") && u.getContrast().equals("admin")){
-            return "redirect:/employees";
-        }else {
-            return "redirect:login";
+        switch (lang) {
+            case "en":
+                Locale.setDefault(Locale.ENGLISH);
+                break;
+            case "es":
+                Locale.setDefault(new Locale("es", "ES"));
+                break;
+            case "ch":
+                Locale.setDefault(Locale.CHINESE);
+                break;
+            default:
+                Locale.setDefault(Locale.getDefault());
         }
 
-}
+        String referer = request.getHeader("Referer");
 
+        return "redirect:" + referer;
+    }
 }
