@@ -8,8 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoSpringApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
-
+		System.out.println("Hello World");
 	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoSpringApplication.class, args);
