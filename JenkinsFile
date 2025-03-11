@@ -1,0 +1,18 @@
+pipeline {
+   agent any
+   stages {
+       stage('sources') {
+           steps {
+               git branch: 'main', url: 'https://github.com/daninune/springBootDani.git'
+               sh 'mvn package'
+           }
+       }
+       /*
+       stage('deploy') {
+           steps {
+               sh 'scp -r $(pwd)/* jenkins@10.20.30.210:/home/jenkins/test_app'
+               sh 'ssh jenkins@10.20.30.210 "sudo /usr/bin/supervisorctl restart all"'
+           }
+       } */
+   }
+}
