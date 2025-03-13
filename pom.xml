@@ -93,16 +93,7 @@
 			<artifactId>jquery</artifactId>
 			<version>3.6.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.0.2</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
