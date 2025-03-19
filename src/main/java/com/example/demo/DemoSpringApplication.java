@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class DemoSpringApplication extends SpringBootServletInitializer implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Hello Wkmorld");
+		System.out.println("Hello Wkñ`pmorld");
 		;
 	}
 
