@@ -1,0 +1,48 @@
+"pipeline {
+  agent any
+
+  environment {
+  MAVEN_HOME = "C:/Users/DanielBaladez/Downloads/apache-maven-3.8.8-bin/apache-maven-3.8.8/bin"
+  //TOMCAT_WEBAPPS = "C:/Program Files (x86)/Apache Software Foundation/Tomcat 10.1/webapps"
+  // REDMINE_API_KEY = "fbc9c1aede9aa671d86bd8fdea4a4dbd359efe04"  // Configurar en Jenkins como variable segura
+  REDMINE_URL = "https://danipruebas.redmineup.com/projects.json"
+  //ISSUE_ID = "2"  // ID de la tarea en Redmine
+  PATH_GENERATED_WAR="C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 10.1\\webapps\\target\\demo-spring-0.0.1-SNAPSHOT.war"
+}
+stages {
+  stage('Build') {
+  steps {
+  git branch: 'main', url: 'https://github.com/daninune/springBootDani.git'
+
+  //     sh 'mvn clean package'
+
+}
+
+}
+
+stage('copyFiles') {
+steps{
+fileOperations([fileCopyOperation(
+excludes: '',
+flattenFiles: false,
+includes: 'target/demo-spring-0.0.1-SNAPSHOT.war',
+targetLocation: 'C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 10.1_Tomcat13\\webapps'
+)])
+}
+
+
+}
+
+stage('redmine') {
+steps{
+powershell 'Invoke-RestMethod -Headers @{"X-Redmine-API-Key"="d0be427cf7a0046f703725902f9e950773f83cdf"} http://localhost:8080/issues.json -ContentType "application/json" -Body "{issue: {project_id: 1 ,subject: test watchers}}" '
+//  sh 'Invoke-RestMethod -Headers @{"X-Redmine-API-Key"="d0be427cf7a0046f703725902f9e950773f83cdf"} http://localhost:8080/projects-Method POST -ContentType 'application/json' -Body '{"issue": {"project_id": 438, "subject": "test watchers", "watcher_user_ids": [7,11,110]}}'
+
+}
+
+
+
+}
+
+}
+}

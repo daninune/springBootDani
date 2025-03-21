@@ -1,23 +1,16 @@
 package com.example.demo.controller;
 
-import com.example.demo.mapper.EmployeeMapper;
 import com.example.demo.model.user.User;
 
 import com.example.demo.model.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class UsersController {
-    @Autowired
-    EmployeeMapper employeeMapper;
     @Autowired
     UserService userService;
     @GetMapping("/users/{pageNo}")

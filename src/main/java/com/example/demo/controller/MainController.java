@@ -1,15 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.EmployeeDTO;
-import com.example.demo.mapper.EmployeeMapper;
 import com.example.demo.model.customer.Customer;
 import com.example.demo.model.customer.CustomerService;
 import com.example.demo.model.employee.Employee;
-import com.example.demo.model.employee.EmployeeDAO;
 import com.example.demo.model.employee.EmployeeService;
 import com.example.demo.model.officce.Offices;
 import com.example.demo.model.officce.OfficesRepository;
-import com.example.demo.model.paises.PaisRepository;
 import com.example.demo.model.paises.PaisService;
 import com.example.demo.model.paises.Paises;
 import com.example.demo.model.provinces.ProvinceService;
@@ -17,11 +13,10 @@ import com.example.demo.model.provinces.Provinces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,8 +32,7 @@ public class MainController {
 
     @Autowired
     EmployeeService employeeService;
-    @Autowired
-    EmployeeMapper employeeMapper;
+
 
     @Autowired
     ProvinceService provinceService;
