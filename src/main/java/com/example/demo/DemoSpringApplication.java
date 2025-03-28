@@ -14,6 +14,7 @@ public class DemoSpringApplication extends SpringBootServletInitializer implemen
 		System.out.println("cambio");
 		System.out.println("cambio");
 		System.out.println("error#1");
+		System.out.println("error#2");
 	}
 
 
