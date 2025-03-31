@@ -1,4 +1,4 @@
-"pipeline {
+pipeline {
   agent any
 
   environment {
@@ -22,12 +22,7 @@ stages {
 
 stage('copyFiles') {
 steps{
-fileOperations([fileCopyOperation(
-excludes: '',
-flattenFiles: false,
-includes: 'target/demo-spring-0.0.1-SNAPSHOT.war',
-targetLocation: 'C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 10.1_Tomcat13\\webapps'
-)])
+
 }
 
 
