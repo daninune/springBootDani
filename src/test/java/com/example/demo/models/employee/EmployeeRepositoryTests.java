@@ -55,7 +55,7 @@ public class EmployeeRepositoryTests {
     @Transactional
     public void testDeleteById(){
         employeeRepository.deleteById(1);
-        assertThat(employeeRepository.findAll()).isNotNull();
+        //assertThat(employeeRepository.findAll()).isNotNull();
         assertThat(employeeRepository.findAll()).size().isGreaterThan(0);
     }
 
