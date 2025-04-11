@@ -16,7 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @RestController
 public class MainControllerTest {
-/*
     @Autowired
     private MainController mainController;
     private MockMvc controller;
@@ -31,14 +30,8 @@ public class MainControllerTest {
         this.controller.perform(get("/")).andExpect(status().isOk());
     }
 
-    @Test
-    public void testMainControllerHome() throws Exception {
-        this.controller.perform(get("/home")).andExpect(status().isOk());
-    }
 
-    @Test
-    public void testMainControllerEmployees() throws Exception {
-        this.controller.perform(get("/employees.js")).andExpect(status().isOk());
-    }
-*/
+
+
+
 }

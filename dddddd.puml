@@ -1,0 +1,495 @@
+@startuml
+interface com.example.demo.model.officce.OfficesRepository {
+~ List<Offices> getOffices()
+~ void updateOffice(String,int)
+~ Page<Offices> findAllOffices(Pageable)
+~ Offices findOfficesById(int)
+}
+
+class com.example.demo.model.employee.EmployeeService {
+- EmployeeRepository employeeRepository
++ List<Employee> getEmployees()
++ Employee findById(int)
++ Iterable<Employee> findAll(Pageable)
++ void save(Employee)
++ void deleteById(int)
++ Page<Employee> findAllEmployees(Pageable)
++ long count()
+}
+
+
+class com.example.demo.model.paises.Paises {
+- Integer id
+- String nombre
++ Integer getId()
++ String getNombre()
++ void setId(Integer)
++ void setNombre(String)
+}
+
+
+interface com.example.demo.model.paises.PaisDAO {
+~ List<Paises> getPaises()
+}
+
+interface com.example.demo.model.customer.CustomerRepository {
+~ List<Customer> getAll()
+~ Page<Customer> findCustomers(Pageable)
+~ Customer findCustomerById(int)
+~ void updateCustomer(String,Integer)
+}
+
+interface com.example.demo.model.customer.CustomerDAO {
+~ List<Customer> getCustomers()
+~ Customer findById(Integer)
+~ Iterable<Customer> findAll(Pageable)
+~ void save(Customer)
+~ Page<Customer> findAllCustomers(Pageable)
+~ void deleteById(int)
+~ void updateCustomer(String,Integer)
+}
+
+class com.example.demo.controller.MainController {
+- {static} int INITIAL_PAGE
+- {static} int INITIAL_PAGE_SIZE
+- int ROW_PER_PAGE
+~ EmployeeService employeeService
+~ ProvinceService provinceService
+~ CustomerService customerService
+~ PaisService paisService
+~ OfficesRepository officesRepository
++ String getIndex()
++ String getHome()
++ String getEmployees(Model,Optional<Integer>,Optional<Integer>)
++ String newEmployee(Model)
++ String saveEmployee(Employee,Model)
++ String editEmployee(Employee,Model)
++ String deleteEmployee(long)
++ String editEmployee(long,Model)
++ String getEmployeesDTO(Model)
+}
+
+
+class com.example.demo.controller.SechedulesController {
+- SecheduleService secheduleService
++ String index(Model,Optional<Integer>,Optional<Integer>)
++ String index(Model)
++ String saveSechedule(SecheduleDTO)
+}
+
+
+interface com.example.demo.model.provinces.ProvinceRepository {
+~ List<Provinces> getProvinces()
+}
+
+class com.example.demo.DemoSpringApplicationTests {
+}
+class com.example.demo.model.officce.OfficcesService {
+- OfficesRepository officesRepository
++ List<Offices> getOffices()
++ Offices findById(Integer)
++ Iterable<Offices> findAll(Pageable)
++ void save(Offices)
++ void deleteById(Integer)
++ Page<Offices> findAllOffices(Pageable)
++ long count()
++ void updateOffice(String,int)
+}
+
+
+interface com.example.demo.model.sechedule.SecheduleRepository {
+~ List<Sechedule> getSechedule()
+~ Page<Sechedule> findSechedules(Pageable)
+~ Sechedule findSecheduleById(int)
+~ void updateSechedule(String,Date,int,Date,Integer)
+}
+
+class com.example.demo.model.sechedule.SecheduleService {
+- SecheduleRepository secheduleRepository
++ List<Sechedule> getSechedules()
++ Sechedule findById(Integer)
++ Iterable<Sechedule> findAll(Pageable)
++ void save(Sechedule)
++ Page<Sechedule> findAllSechedules(Pageable)
++ void deleteById(int)
++ void updateSechedule(String,Date,int,Date,Integer)
+}
+
+
+interface com.example.demo.model.employee.EmployeeRepository {
+~ List<Employee> getEmployees()
+~ boolean updateEmployee(String,int)
+~ Page<Employee> findAllEmployees(Pageable)
+~ Employee findEmployeeById(int)
+}
+
+class com.example.demo.model.user.User {
+- String username
+- String contrast
++ String getUsername()
++ void setUsername(String)
++ String getContrast()
++ void setContrast(String)
+}
+
+
+interface com.example.demo.model.provinces.ProvinceDAO {
+~ List<Provinces> getProvinces()
+}
+
+interface com.example.demo.model.user.UserRepository {
+~ User getUserByName(String)
+~ Page<User> findUsers(Pageable)
+~ ArrayList<User> GetAllUsers()
+}
+
+class com.example.demo.config.SecurityConfig {
++ SecurityFilterChain securityFilterChain(HttpSecurity)
+}
+
+class com.example.demo.model.sechedule.Sechedule {
+- int id
+- String descripcion
+- String start
+- String end
+- int isCompleteWeek
++ int getId()
++ void setId(int)
++ String getDescripcion()
++ void setDescripcion(String)
++ String getStart()
++ void setStart(String)
++ String getEnd()
++ void setEnd(String)
++ int getIsCompleteWeek()
++ void setIsCompleteWeek(int)
+}
+
+
+class com.example.demo.dto.UserDTO {
+- String username
+- String contrast
++ String getUsername()
++ void setUsername(String)
++ String getContrast()
++ void setContrast(String)
+}
+
+
+class com.example.demo.model.customer.Customer {
+- Integer id
+- String name
++ Integer getId()
++ void setId(Integer)
++ String getName()
++ void setName(String)
+}
+
+
+class com.example.demo.controller.customerController {
+~ CustomerService customerService
++ String index(Model,Optional<Integer>,Optional<Integer>)
++ String newCustomer(Model)
++ String saveCustomer(Customer)
++ String deleteCustomer(int)
++ String editCustomer(int,Model)
++ String editCustomer(Customer,Model)
+}
+
+
+class com.example.demo.dto.EmployeeDTO {
+- Integer id
+- String name
+- String lastName
++ Integer getId()
++ void setId(Integer)
++ String getName()
++ void setName(String)
++ String getLastName()
++ void setLastName(String)
+}
+
+
+class com.example.demo.controller.MainControllerTest {
+}
+interface com.example.demo.model.paises.PaisRepository {
+~ List<Paises> getPaises()
+}
+
+class com.example.demo.model.officce.Offices {
+- Integer id
+- String name
++ Integer getId()
++ void setName(String)
++ String getName()
++ void setId(Integer)
+}
+
+
+class com.example.demo.DemoSpringApplication {
++ void run(String)
+# SpringApplicationBuilder configure(SpringApplicationBuilder)
++ {static} void main(String[])
+}
+
+class com.example.demo.model.provinces.Provinces {
+- Integer idProvinces
+- String name
++ Integer getIdProvinces()
++ void setIdProvinces(Integer)
++ String getName()
++ void setName(String)
+}
+
+
+interface com.example.demo.model.sechedule.SecheduleDAO {
+~ List<Sechedule> getSechedules()
+~ Sechedule findById(Integer)
+~ Iterable<Sechedule> findAll(Pageable)
+~ void save(Sechedule)
+~ Page<Sechedule> findAllSechedules(Pageable)
+~ void deleteById(int)
+~ void updateSechedule(String,Date,int,Date,Integer)
+}
+
+interface com.example.demo.model.employee.EmployeeDAO {
+~ List<Employee> getEmployees()
+~ Employee findById(int)
+~ Iterable<Employee> findAll(Pageable)
+~ void save(Employee)
+~ void deleteById(int)
+~ Page<Employee> findAllEmployees(Pageable)
+~ long count()
+}
+
+class com.example.demo.models.employee.EmployeeRepositoryTests {
+- EmployeeRepository employeeRepository
++ void testGetEmployees()
+}
+
+
+class com.example.demo.model.customer.CustomerService {
+- CustomerRepository customerRepository
++ List<Customer> getCustomers()
++ Customer findById(Integer)
++ Iterable<Customer> findAll(Pageable)
++ void save(Customer)
++ Page<Customer> findAllCustomers(Pageable)
++ void deleteById(int)
++ void updateCustomer(String,Integer)
+}
+
+
+class com.example.demo.model.provinces.ProvinceService {
+- JdbcTemplate jdbcTemplate
++ List<Provinces> getProvinces()
+}
+
+
+class com.example.demo.model.sechedule.SecheduleDTO {
+- String descripcion
+- String start
+- String end
+- int isCompleteWeek
++ String getDescripcion()
++ void setDescripcion(String)
++ String getStart()
++ void setStart(String)
++ String getEnd()
++ void setEnd(String)
++ int getIsCompleteWeek()
++ void setIsCompleteWeek(int)
+}
+
+
+interface com.example.demo.model.user.UserDAO {
+~ void save(User)
+~ Iterable<User> findAll()
+~ User findByUsername(String)
+~ ArrayList<User> GetAllUsers()
+~ Page<User> findPaginated(int,int)
+}
+
+class com.example.demo.controller.LoginController {
+- {static} String SECRET_KEY_1
+- {static} String SECRET_KEY_2
+- IvParameterSpec ivParameterSpec
+- SecretKeySpec secretKeySpec
+- Cipher cipher
++ String getIndex(Model)
++ String login(UserDTO,Model)
+}
+
+
+class utils.Security {
+- {static} String strsecretKey
+- {static} SecretKeySpec secretKey
+- {static} byte[] key
+- {static} String ALGORITHM
+- {static} void prepareSecreteKey(String)
++ {static} String encrypt(String)
+}
+
+
+class com.example.demo.controller.OfficceController {
+- OfficcesService officesService
++ String index(Model,Optional<Integer>,Optional<Integer>)
++ String index(Model)
++ String saveOffice(Offices)
++ String deleteOficce(int)
++ String editOfficce(int,Model)
++ String editOffice(Offices)
+}
+
+
+class com.example.demo.ServletInitializer {
+# SpringApplicationBuilder configure(SpringApplicationBuilder)
+}
+
+class com.example.demo.controller.apiController {
+- ProvinceService provinceService
++ List<Provinces> getProvincias()
+}
+
+
+interface com.example.demo.model.officce.OfficesDAO {
+~ List<Offices> getOffices()
+~ Offices findById(Integer)
+~ Iterable<Offices> findAll(Pageable)
+~ void save(Offices)
+~ void deleteById(Integer)
+~ Page<Offices> findAllOffices(Pageable)
+~ long count()
+~ void updateOffice(String,int)
+}
+
+class com.example.demo.model.user.UserService {
+- UserRepository userRepository
++ void save(User)
++ Iterable<User> findAll()
++ User findByUsername(String)
++ ArrayList<User> GetAllUsers()
++ Page<User> findPaginated(int,int)
+}
+
+
+class com.example.demo.model.employee.Employee {
+- int idemployee
+- String hash
+- Date startdate
+- String name
+- String lastname
+- Date fechaNacimiento
+- String idcard
+- String ssnumber
+- String address
+- String zip
+- String city
+- Provinces idprovince
+- String country
+- String tel
+- String email
+- String iban
+- Customer idcustomer
+- String rgpd
+- String area
+- String job
+- String notes
+- String category
+- Date leavingdate
+- String nip
+- String baseline
+- String idschedule
+- Offices idOffice
++ int getIdemployee()
++ void setIdemployee(int)
++ String getHash()
++ void setHash(String)
++ Date getStartdate()
++ void setStartdate(Date)
++ String getName()
++ void setName(String)
++ String getLastname()
++ void setLastname(String)
++ Date getFechaNacimiento()
++ void setFechaNacimiento(Date)
++ String getIdcard()
++ void setIdcard(String)
++ String getSsnumber()
++ void setSsnumber(String)
++ String getAddress()
++ void setAddress(String)
++ String getZip()
++ void setZip(String)
++ String getCity()
++ void setCity(String)
++ Provinces getIdprovince()
++ void setIdprovince(Provinces)
++ String getCountry()
++ void setCountry(String)
++ String getTel()
++ void setTel(String)
++ String getEmail()
++ void setEmail(String)
++ String getIban()
++ void setIban(String)
++ Customer getIdcustomer()
++ void setIdcustomer(Customer)
++ String getRgpd()
++ void setRgpd(String)
++ String getArea()
++ void setArea(String)
++ String getJob()
++ void setJob(String)
++ String getNotes()
++ void setNotes(String)
++ String getCategory()
++ void setCategory(String)
++ Date getLeavingdate()
++ void setLeavingdate(Date)
++ String getNip()
++ void setNip(String)
++ String getBaseline()
++ void setBaseline(String)
++ String getIdschedule()
++ void setIdschedule(String)
++ Offices getIdOffice()
++ void setIdOffice(Offices)
+}
+
+
+class com.example.demo.model.paises.PaisService {
+- PaisRepository paisRepository
++ List<Paises> getPaises()
+}
+
+
+class com.example.demo.controller.UsersController {
+~ UserService userService
++ String index(Model,int)
++ String newUser(Model)
++ String saveUser(User)
++ String editEmployee(String,Model)
+}
+
+
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.officce.OfficesRepository
+com.example.demo.model.employee.EmployeeDAO <|.. com.example.demo.model.employee.EmployeeService
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.customer.CustomerRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.provinces.ProvinceRepository
+com.example.demo.model.officce.OfficesDAO <|.. com.example.demo.model.officce.OfficcesService
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.sechedule.SecheduleRepository
+com.example.demo.model.sechedule.SecheduleDAO <|.. com.example.demo.model.sechedule.SecheduleService
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.employee.EmployeeRepository
+org.springframework.data.repository.CrudRepository <|-- com.example.demo.model.user.UserRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.demo.model.paises.PaisRepository
+org.springframework.boot.CommandLineRunner <|.. com.example.demo.DemoSpringApplication
+org.springframework.boot.web.servlet.support.SpringBootServletInitializer <|-- com.example.demo.DemoSpringApplication
+com.example.demo.model.customer.CustomerDAO <|.. com.example.demo.model.customer.CustomerService
+com.example.demo.model.provinces.ProvinceDAO <|.. com.example.demo.model.provinces.ProvinceService
+org.springframework.boot.web.servlet.support.SpringBootServletInitializer <|-- com.example.demo.ServletInitializer
+com.example.demo.model.user.UserDAO <|.. com.example.demo.model.user.UserService
+com.example.demo.model.paises.PaisDAO <|.. com.example.demo.model.paises.PaisService
+@enduml
